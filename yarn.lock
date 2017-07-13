@@ -8,11 +8,12 @@
   dependencies:
     three "0.70"
 
-"@snakesilk/platform-traits@^0.1.1":
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/@snakesilk/platform-traits/-/platform-traits-0.1.1.tgz#6f9bc305f4097751346d26593ab7e1a79f15ce6e"
+"@snakesilk/platform-traits@^0.1.2":
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/@snakesilk/platform-traits/-/platform-traits-0.1.2.tgz#59a4a16d664277b7023611c5c042885620239d01"
   dependencies:
     "@snakesilk/engine" "^0.8.0"
+    three "0.70"
 
 abbrev@1:
   version "1.0.9"
