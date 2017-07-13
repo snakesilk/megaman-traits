@@ -8,7 +8,7 @@ class Destructible extends Trait
 
         this.NAME = 'destructible';
 
-        this.affectors = new Set;
+        this.affectors = new Set();
     }
     __collides(withObject)
     {
