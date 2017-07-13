@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@snakesilk/engine": "^0.8.0",
-    "@snakesilk/platform-traits": "^0.1.1"
+    "@snakesilk/platform-traits": "^0.1.2"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
