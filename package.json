@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "description": "Traits useful for making Megaman games with Snakesilk Game Engine",
   "license": "MIT",
-  "main": "./lib/index.js",
+  "main": "./dist/index.js",
   "scripts": {
     "build": "./scripts/build.sh",
     "test": "mocha './src/**/*-test.js'"
