@@ -8,6 +8,11 @@ class Headlight extends Light
         super();
         this.NAME = 'headlight';
 
+        this.threshold = .8;
+
+        this._nextUpdate = 0;
+        this._updateFrequency = 2.5;
+
         this.position = new THREE.Vector3(4, 7.5, -1);
 
         const target = new THREE.Object3D();
@@ -60,6 +65,27 @@ class Headlight extends Light
         this._host.model.remove(this.lamps[0].light.target);
         super.__detach();
     }
+
+    _detectAmbient(deltaTime)
+    {
+        if (this._nextUpdate > this._updateFrequency) {
+            this._nextUpdate = 0;
+            if (this._host.world === undefined) {
+                return;
+            }
+            const ambientLight = this._host.world.ambientLight;
+            if (ambientLight.color.r < this.threshold
+            || ambientLight.color.g < this.threshold
+            || ambientLight.color.b < this.threshold) {
+                this.on();
+            }
+            else {
+                this.off();
+            }
+        }
+
+        this._nextUpdate += deltaTime;
+    }
     __timeshift(deltaTime)
     {
         const
@@ -75,7 +101,9 @@ class Headlight extends Light
             }
         }
 
-        super.__timeshift.apply(this, arguments);
+        this._detectAmbient(deltaTime);
+
+        super.__timeshift(deltaTime);
     }
 }
 
