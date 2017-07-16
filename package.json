@@ -6,7 +6,8 @@
   "main": "./dist/index.js",
   "scripts": {
     "build": "./scripts/build.sh",
-    "test": "mocha './src/**/*-test.js'"
+    "test": "mocha './src/**/*-test.js'",
+    "watch": "babel ./src --out-dir ./dist --watch"
   },
   "dependencies": {
     "@snakesilk/engine": "^0.8.0",
