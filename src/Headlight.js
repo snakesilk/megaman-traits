@@ -53,16 +53,12 @@ class Headlight extends Light
         }
 
         super.__attach(host);
-        this._host.model.add(this.lamps[0].light);
-        this._host.model.add(this.lamps[0].light.target);
     }
     __detach()
     {
         this.flare.material.map = undefined;
         this.flare.material.needsUpdate = true;
 
-        this._host.model.remove(this.lamps[0].light);
-        this._host.model.remove(this.lamps[0].light.target);
         super.__detach();
     }
 
