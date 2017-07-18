@@ -10,7 +10,7 @@
     "watch": "babel ./src --out-dir ./dist --watch"
   },
   "dependencies": {
-    "@snakesilk/engine": ">=0.10.0",
+    "@snakesilk/engine": ">=0.12.0",
     "@snakesilk/platform-traits": ">=0.3.0"
   },
   "devDependencies": {
