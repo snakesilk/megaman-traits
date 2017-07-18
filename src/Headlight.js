@@ -47,8 +47,8 @@ class Headlight extends Light
     }
     __attach(host)
     {
-        if (host.textures['headlight_lensflare']) {
-            this.flare.material.map = host.textures['headlight_lensflare'].texture;
+        if (host.textures.has('headlight_lensflare')) {
+            this.flare.material.map = host.textures.get('headlight_lensflare').texture;
             this.flare.material.needsUpdate = true;
         }
 
