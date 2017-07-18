@@ -1,6 +1,17 @@
 const THREE = require('three');
 const {Light} = require('@snakesilk/platform-traits');
 
+function createHeadbob(animator, candidates) {
+    return function updateHeadbob(dt) {
+        this.point.position.y = this.beam.position.y = this.position.y;
+        if (candidates.has(animator._currentAnimation)) {
+            if (animator._currentIndex === 1 || animator._currentIndex === 3) {
+                this.point.position.y = this.beam.position.y -= this.headbob;
+            }
+        }
+    }
+}
+
 class Headlight extends Light
 {
     constructor()
@@ -52,6 +63,11 @@ class Headlight extends Light
             this.flare.material.needsUpdate = true;
         }
 
+        this.updateHeadbob = createHeadbob(host.animators[0], new Set([
+            host.animations.get('run'),
+            host.animations.get('run-shoot'),
+        ]));
+
         super.__attach(host);
     }
     __detach()
@@ -90,13 +106,7 @@ class Headlight extends Light
 
         this.flare.material.opacity = this.point.intensity / this.lamps[1].intensity;
 
-        this.point.position.y = this.beam.position.y = this.position.y;
-        if (animator._currentAnimation === host.animations.run) {
-            if (animator._currentIndex === 1 || animator._currentIndex === 3) {
-                this.point.position.y = this.beam.position.y -= this.headbob;
-            }
-        }
-
+        this.updateHeadbob(deltaTime);
         this._detectAmbient(deltaTime);
 
         super.__timeshift(deltaTime);
