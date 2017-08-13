@@ -1,4 +1,4 @@
-const THREE = require('three');
+const {Vector3} = require('three');
 const {Timeline} = require('@snakesilk/engine');
 const {Solid} = require('@snakesilk/platform-traits');
 
@@ -13,10 +13,10 @@ class Elevator extends Solid
         this._initialized = false;
         this._distance = 0;
         this._nodes = [];
-        this._offset = new THREE.Vector2;
-        this._origo = new THREE.Vector3;
-        this._nextPos = new THREE.Vector2;
-        this._timeline = new Timeline;
+        this._offset = new Vector3();
+        this._origo = new Vector3();
+        this._nextPos = new Vector3();
+        this._timeline = new Timeline();
 
         this.fixed = true;
         this.obstructs = true;
@@ -53,16 +53,16 @@ class Elevator extends Solid
         this._origo.copy(pos);
         this._nextPos.copy(pos);
     }
-    addNode(vec2)
+    addNode(vec3)
     {
-        this._nodes.push(vec2);
-        this._timeline.addFrame(vec2, vec2.length());
+        this._nodes.push(vec3);
+        this._timeline.addFrame(vec3, vec3.length());
     }
     getOffset(distance)
     {
         const resolution = this._timeline.resolveTime(distance);
         const offset = this._offset;
-        offset.set(0, 0);
+        offset.set(0, 0, 0);
 
         for (let i = 0; i !== resolution.index; ++i) {
             offset.add(this._nodes[i]);

@@ -66,7 +66,7 @@ class Teleport extends Trait
     _handle(dt)
     {
         /* Block velocity. */
-        this._host.velocity.set(0, 0);
+        this._host.velocity.set(0, 0, 0);
 
         if (this._startProgress > 0) {
             this._startProgress -= dt;

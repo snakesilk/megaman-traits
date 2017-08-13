@@ -19,7 +19,8 @@ class Conveyor extends Solid
 
         const attack = super.__collides(...arguments);
         if (attack === this.TOP) {
-            subject.physics.velocity.add(this.velocity);
+            subject.physics.velocity.x += this.velocity.x;
+            subject.physics.velocity.y += this.velocity.y;
         }
     }
     swapDirection()
